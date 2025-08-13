@@ -1,6 +1,6 @@
 # README.md oluştur
 cat > README.md << 'EOF'
-# 🤖 CryptoBot - USDT TRC20 Transfer Bot
+# 📤 USDT TRC20 Crypto Telegram Sender
 
 Telegram üzerinden güvenli USDT (TRC20) transferi yapabilen bot sistemi.
 
@@ -41,5 +41,5 @@ Telegram üzerinden güvenli USDT (TRC20) transferi yapabilen bot sistemi.
 
 1. **Repository'i klonlayın:**
 ```bash
-git clone https://github.com/yourusername/cryptobot.git
-cd cryptobot
+git clone https://github.com/trwebdeveloper/usdt20-crypto-telegram-sender.git
+cd usdt20-crypto-telegram-sender
