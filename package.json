@@ -1,0 +1,55 @@
+{
+  "name": "telegram-crypto-bot",
+  "version": "1.0.0",
+  "description": "Telegram USDT TRC20 Sender Bot",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest",
+    "migrate": "node src/database/migrate.js",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop cryptobot",
+    "pm2:restart": "pm2 restart cryptobot",
+    "pm2:logs": "pm2 logs cryptobot"
+  },
+  "keywords": [
+    "telegram",
+    "crypto",
+    "usdt",
+    "trc20",
+    "bot"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@noble/hashes": "^1.2.0",
+    "@noble/secp256k1": "^1.7.1",
+    "axios": "^1.11.0",
+    "bcryptjs": "^2.4.3",
+    "bignumber.js": "^9.3.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "ethers": "^5.7.2",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "html-pdf": "^3.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "node-cron": "^3.0.3",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "puppeteer": "^24.16.1",
+    "sequelize": "^6.35.2",
+    "sqlite3": "^5.1.7",
+    "telegraf": "^4.12.2",
+    "telegraf-session-local": "^2.1.1",
+    "tronweb": "^5.3.2",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
+  }
+}
