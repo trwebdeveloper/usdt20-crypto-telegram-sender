@@ -5,6 +5,7 @@ const WalletHandlers = require('./handlers/wallet');
 const SendHandlers = require('./handlers/send');
 const HistoryHandlers = require('./handlers/history');
 const logger = require('../utils/logger');
+const db = require('../database');
 
 class CryptoBot {
   constructor(token) {
@@ -97,13 +98,39 @@ class CryptoBot {
   }
 
   setupCallbacks() {
+    // Ana menü callbacks
+    this.bot.action('add_wallet', WalletHandlers.addWalletStart());
+    this.bot.action('check_balance', WalletHandlers.checkBalances());
+    this.bot.action('send_crypto', SendHandlers.handleSimpleSend());
+    this.bot.action('history', HistoryHandlers.transactionHistory());
+    this.bot.action('help', BasicHandlers.help());
+    this.bot.action('settings', async (ctx) => {
+      await ctx.answerCbQuery();
+      await ctx.reply('⚙️ Ayarlar menüsü yakında eklenecek!');
+    });
+
     // Wallet callbacks
     this.bot.action('wallet_menu', WalletHandlers.walletMenu());
     this.bot.action('wallets_list', WalletHandlers.walletsList());
     this.bot.action('check_balances', WalletHandlers.checkBalances());
-    this.bot.action('add_wallet', WalletHandlers.addWalletStart());
 
     // History callbacks - YENİ!
+    this.bot.action('download_pdf', async (ctx) => {
+      await ctx.answerCbQuery('📄 PDF oluşturuluyor...');
+      const telegramId = ctx.from.id;
+      
+      const transactions = await db.all(`
+        SELECT t.*, w.name as wallet_name 
+        FROM transactions t
+        JOIN wallets w ON t.from_wallet = w.address
+        JOIN users u ON w.user_id = u.id
+        WHERE u.telegram_id = ? 
+        ORDER BY t.created_at DESC 
+        LIMIT 50
+      `, [telegramId]);
+      
+      await HistoryHandlers.generatePDF(ctx, transactions);
+    });
 
     // Cancel callbacks
     this.bot.action('send_cancel', (ctx) => {

@@ -41,3 +41,9 @@ Thumbs.db
 # PM2
 ecosystem.config.js
 .pm2/
+
+# Build & temp files
+nohup.out
+dist/
+build/
+tmp/
