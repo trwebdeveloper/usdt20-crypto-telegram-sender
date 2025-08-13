@@ -1,5 +1,3 @@
-# README.md oluştur
-cat > README.md << 'EOF'
 # 📤 USDT TRC20 Crypto Telegram Sender
 
 Telegram üzerinden güvenli USDT (TRC20) transferi yapabilen bot sistemi.
