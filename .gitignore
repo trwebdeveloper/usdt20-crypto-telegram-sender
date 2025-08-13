@@ -1,9 +1,43 @@
+# Dependencies
 node_modules/
+npm-debug.log*
+
+# Environment variables
 .env
+
+# Database & Data
 data/
+*.db
+*.sqlite*
+
+# Logs
 logs/
-sessions.json
-reports/
 *.log
+
+# Session files
+sessions.json
+
+# Reports
+reports/
+*.pdf
+*.txt
+
+# Scripts & temporary files
+fix-*.sh
+setup-*.sh
+temp*.js
+*.backup
+*.old
 *.tmp
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# PM2
+ecosystem.config.js
+.pm2/
